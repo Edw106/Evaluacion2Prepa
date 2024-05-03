@@ -46,7 +46,7 @@ int binary_to_int(char* binary_string) //FUNCIONA CORRECTAMENTE
 void add_character(char* mssg_string, unsigned int* mssg_size, char letter) //????????????????????????????
 {
 	(*mssg_size)++;
-    mssg_string[(*mssg_size)] = letter;
+    mssg_string[(*mssg_size)-1] = letter;
 }
 
 void extract_string(char* mssg_string, int initial_pos, int final_pos, char* buffer) //FUNCIONA CORRECTAMENTE
@@ -75,6 +75,18 @@ void extract_string(char* mssg_string, int initial_pos, int final_pos, char* buf
 
 
 
+
+
+
+
+
+// ----------------------------------------------------
+// ---------------FUNCIONES YA HECHAS------------------
+// ----------------------------------------------------
+
+
+
+
 // ¿QUÉ HACE ESA VAINA INTERNAMENTE?
 Logger* create_log()
 {
@@ -95,9 +107,7 @@ Logger* create_log()
 	
 	
 	
-// ----------------------------------------------------
-// ---------------FUNCIONES YA HECHAS------------------
-// ----------------------------------------------------
+
 
 // QUE HACE?
 int add_to_log(Logger* logger, Message* message)

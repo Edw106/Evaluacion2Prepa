@@ -35,23 +35,23 @@ typedef struct //Logger contiene:
 
 
 // Let's warm up!
-int potentiation(int, int);
-char int_to_char(int);
-void print_string(char*);
+int potentiation(int base, int exp);
+char int_to_char(int number);
+void print_string(char* string);
 
 // Let's code!
-int binary_to_int(char*);
+int binary_to_int(char* binary_string);
 void add_character(char* mssg_string, unsigned int* mssg_size, char letter);
 
 
 
-void extract_string(char*, int, int, char*);
+void extract_string(char* mssg_string, int initial_pos, int final_pos, char* buffer);
 
 
 
-int add_to_log(Logger*, Message*);
-void translate_message(char*, int, Logger*);
+int add_to_log(Logger* logger, Message* message);
+void translate_message(char* binary_string, int size, Logger* logger);
 
 Logger* create_log();
-void liberate_memory(Logger*);
+void liberate_memory(Logger* logger)
 #endif

@@ -115,24 +115,27 @@ int main()
 {        
         Logger* logger = create_log(); //Crea el logger que utilizaremos
 
-		//paso 1
+                //Lo creo
         Message* mensaje1 = (char*)calloc(1,sizeof(Message));
         mensaje1->size = 0;
-        
-        
-        mensaje1->string = (char*)calloc(mensaje1->size, sizeof(char));
-		
-		//paso 2
-		mensaje1->size ++;
-		
-		//otra vez el 1
-        mensaje1->string = (char*)calloc(mensaje1->size, sizeof(char));
-		mensaje1->string[mensaje1->size-1] = 'A';
 
-		
-		printf("%s", mensaje1->string);
-		
-		//es hermosooo ver esa A
+
+        mensaje1->string = (char*)realloc(mensaje1->string, mensaje1->size * sizeof(char));
+
+                //Agg 'A'
+                mensaje1->size ++;
+        mensaje1->string = (char*)realloc(mensaje1->string, mensaje1->size * sizeof(char));
+                mensaje1->string[mensaje1->size-1] = 'A';
+
+               //Agg 'b'
+                mensaje1->size ++;
+        mensaje1->string = (char*)realloc(mensaje1->string, mensaje1->size * sizeof(char));
+                mensaje1->string[mensaje1->size-1] = 'b';
+
+
+                printf("%s", mensaje1->string);
+
+                //es hermosooo ver esa Ab¡¡¡¡¡¡
 
 
 

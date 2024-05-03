@@ -43,10 +43,9 @@ int binary_to_int(char* binary_string) //FUNCIONA CORRECTAMENTE
 	return Resultado;
 }
 
-//NOTAAA: (un no) MODIFIQUÉ LOS PARAMETROS QUE RECIBE: char* mssg_string --> char** mssg_string
 void add_character(char* mssg_string, unsigned int* mssg_size, char letter) //????????????????????????????
 {
-	mssg_string[1] = 'O'; //NO SIRVE
+	mssg_string[1] = 'O';
 }
 
 void extract_string(char* mssg_string, int initial_pos, int final_pos, char* buffer) //FUNCIONA CORRECTAMENTE
@@ -99,7 +98,9 @@ Logger* create_log()
     new_logger->size = 0;
     // Pone el tamaño en 0
     // ESTO SIGNIFICA que hay 0 mensajes en logs (??)
+    
     return new_logger;
+    //retorna el arreglo de logger (mejor dicho, su direccion)
 }
 
 
@@ -140,6 +141,8 @@ void translate_message(char* binary_string, int size, Logger* logger)
 
 void liberate_memory(Logger* logger)
 {
+	//LIBERA LA MEMORIA :V
+	
     for(int i = 0; i < logger->size; i++)
     {
         Message* temp_holder = logger->logs[i];

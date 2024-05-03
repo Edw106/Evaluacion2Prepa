@@ -110,6 +110,22 @@ void liberate_memory(Logger* logger);
 //#include"message.h"
 
 
+void scan_bits(char * string, int size)
+{
+    char ch = 0;
+    int bit = 0;
+    while(bit < size || ch == '\n')
+    {
+        ch = getchar();
+        if(ch == '0' || ch == '1')
+        {
+            string[bit] = ch;
+            bit++;
+        }
+    }
+
+}
+
 //Este será el main de prueba
 int main()
 {        
@@ -123,11 +139,8 @@ int main()
         
         char tamanoenbinario[17];
         
-        for(int i = 0; i < 16; i++)
-        {
-            tamanoenbinario[i] = getchar();
-        }
-        while(getchar() != '\n'); //Si sobran
+        scan_bits(tamanoenbinario, 16);
+        
         
         //Es el num de bits leídos a continuación 
         // Convertir
@@ -153,11 +166,7 @@ int main()
         char * mensaje_binario = (char *) calloc(tamano+1, sizeof(char));
         printf("Introduzca el mensaje en binario:\n");
         
-        for(int i = 0; i < tamano; i++)
-        {
-            mensaje_binario[i] = getchar();
-        }
-        while(getchar() != '\n'); //Por si sobran
+        scan_bits(mensaje_binario, tamano);
         
         
         translate_message(mensaje_binario, tamano, logger);

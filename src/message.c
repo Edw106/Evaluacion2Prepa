@@ -2,7 +2,7 @@
 
 
 // Let's warm up!
-int potentiation(int base, int exp) //OK
+int potentiation(int base, int exp) //FUNCIONA CORRECTAMENTE
 {
     int R = 1;
     for(int i = 1; i <= exp; i++)
@@ -12,18 +12,18 @@ int potentiation(int base, int exp) //OK
 	return R;
 }
 
-char int_to_char(int number) //OK
+char int_to_char(int number) //FUNCIONA CORRECTAMENTE
 {
     return ((char)number);
 }
 
-void print_string(char* string) //OK
+void print_string(char* string) //FUNCIONA CORRECTAMENTE
 {
     printf("%s", string);
 }
 
 // Let's code!
-int binary_to_int(char* binary_string) //OK
+int binary_to_int(char* binary_string) //FUNCIONA CORRECTAMENTE
 {
 	int Resultado = 0;
 	for(int i = 0; i < 8; i++)
@@ -46,7 +46,7 @@ void add_character(char* mssg_string, unsigned int* mssg_size, char letter) //??
     mssg_string[(*mssg_size)] = letter;
 }
 
-void extract_string(char* mssg_string, int initial_pos, int final_pos, char* buffer) //OK
+void extract_string(char* mssg_string, int initial_pos, int final_pos, char* buffer) //FUNCIONA CORRECTAMENTE
 {
 	initial_pos--; //Por ser array
 	final_pos--;
@@ -79,9 +79,11 @@ Logger* create_log()
     // Crea un NUEVO VECTOR de LOGGER (de tam 1)
     
     new_logger->logs = NULL;
-    // El elemento new
+    // HACE QUE logs (un apuntador a un arreglo de message) apunte a NADA
     
     new_logger->size = 0;
+    // Pone el tamaño en 0
+    // ESTO SIGNIFICA que hay 0 mensajes en logs (??)
     return new_logger;
 }
 
@@ -90,7 +92,7 @@ Logger* create_log()
 
 
 
-
+// QUE HACE?
 int add_to_log(Logger* logger, Message* message)
 {
     logger->logs = (Message**)realloc(logger->logs,(logger->size + 1) * (sizeof(Message*)));

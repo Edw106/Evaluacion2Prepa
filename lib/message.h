@@ -3,10 +3,10 @@
 #include<stdlib.h>
 #include <stdio.h>
 
-typedef struct
+typedef struct //Message contiene
 {
-    unsigned int size;
-    char* string;
+    unsigned int size; //Un tamaño
+    char* string; //Un string
 } Message;
 
 
@@ -15,26 +15,16 @@ typedef struct
 
 
 
-
-
-
-
-typedef struct
+typedef struct //Logger contiene:
 {
     Message** logs;
+    //Un apuntador a un apuntador tipo message
+	//(probablemente es un apuntador a un arreglo de message)
+    
     unsigned int size;
+    //un tamaño
+    
 }Logger;
-
-/* Logger
-el logger contiene:
-
-- Un tamaño
-
-- Un apuntador a un apuntador tipo message
-(probablemente es un apuntador a un arreglo de message)
-
-
-*/
 
 
 

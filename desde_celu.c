@@ -389,7 +389,6 @@ void translate_message(char* binary_string, int size, Logger* logger)
 
     for(int i = 0; i < char_cant; i++)
     {
-        //01001000011011110110110001100001
         extract_string(binary_string, (8*i+1), (8*(i+1)), temp_buffer); //Pequeña corrección aritmética
         int num = binary_to_int(temp_buffer);
         add_character(message->string, &message->size, int_to_char(num));

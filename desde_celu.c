@@ -1,3 +1,6 @@
+//__________________________________
+//______________message.h_______________
+//__________________________________
 #ifndef MESSAGE_H
 #define MESSAGE_H
 #include<stdlib.h>
@@ -14,7 +17,6 @@ typedef struct //Message contiene
 
 
 
-
 typedef struct //Logger contiene:
 {
     Message** logs;
@@ -25,11 +27,6 @@ typedef struct //Logger contiene:
     //un tamaño
 
 }Logger;
-
-
-
-
-
 
 
 
@@ -106,12 +103,9 @@ void liberate_memory(Logger* logger);
 
 
 
-
-
-
-
-
-//_____MAIN_____
+//__________________________________
+//______________MAIN_______________
+//__________________________________
 #include<stdio.h>
 //#include"message.h"
 
@@ -122,18 +116,21 @@ int main()
         Logger* logger = create_log(); //Crea el logger que utilizaremos
 
 		//paso 1
-        Message mensaje1 = {0};
-        mensaje1.string = (char*)calloc(mensaje1.size, sizeof(char));
+        Message* mensaje1 = (char*)calloc(1,sizeof(Message));
+        mensaje1->size = 0;
+        
+        
+        mensaje1->string = (char*)calloc(mensaje1->size, sizeof(char));
 		
 		//paso 2
-		mensaje1.size ++;
+		mensaje1->size ++;
 		
 		//otra vez el 1
-        mensaje1.string = (char*)calloc(mensaje1.size, sizeof(char));
-		mensaje1.string[mensaje1.size-1] = 'A';
+        mensaje1->string = (char*)calloc(mensaje1->size, sizeof(char));
+		mensaje1->string[mensaje1->size-1] = 'A';
 
 		
-		printf("%s", mensaje1.string);
+		printf("%s", mensaje1->string);
 		
 		//es hermosooo ver esa A
 
@@ -212,6 +209,11 @@ int main()
 
 
 
+//__________________________________
+//____________message.c_______________
+//__________________________________
+
+
 
 //#include<message.h>
 
@@ -260,7 +262,7 @@ int binary_to_int(char* binary_string) //FUNCIONA CORRECTAMENTE
 
 void add_character(char* mssg_string, unsigned int* mssg_size, char letter) //????????????????????????????
 {
-        (*mssg_size)++
+        (*mssg_size)++;
 }
 
 void extract_string(char* mssg_string, int initial_pos, int final_pos, char* buffer) //FUNCIONA CORRECTAMENTE

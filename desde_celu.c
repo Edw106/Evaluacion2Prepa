@@ -115,30 +115,27 @@ int main()
 {        
         Logger* logger = create_log(); //Crea el logger que utilizaremos
 
-                //Lo creo
+        //Creo un dato tipo Message
         Message* mensaje1 = (char*)calloc(1,sizeof(Message));
-        mensaje1->size = 0;
 
-
+        //agg 'A'
         mensaje1->string = (char*)realloc(mensaje1->string, mensaje1->size * sizeof(char));
-
-                //Agg 'A'
-                mensaje1->size ++;
+        add_character(mensaje1->string, &mensaje1->size, 'A');
+        printf("%s\n",mensaje1->string);
+        
+        //agg 'h'
         mensaje1->string = (char*)realloc(mensaje1->string, mensaje1->size * sizeof(char));
-                mensaje1->string[mensaje1->size-1] = 'A';
-
-               //Agg 'b'
-                mensaje1->size ++;
+        add_character(mensaje1->string, &mensaje1->size, 'h');
+        printf("%s\n",mensaje1->string);
+        
+        //agg 'h'
         mensaje1->string = (char*)realloc(mensaje1->string, mensaje1->size * sizeof(char));
-                mensaje1->string[mensaje1->size-1] = 'b';
-
-
-                printf("%s", mensaje1->string);
-
-                //es hermosooo ver esa Ab¡¡¡¡¡¡
-
-
-
+        add_character(mensaje1->string, &mensaje1->size, 'h');
+        printf("%s\n",mensaje1->string);
+        
+        
+        //Si había que usar memoria dinámica >:)
+        
         liberate_memory(logger); //Libera la memoria que ocupaba el logger
         return 0;
 }
@@ -266,6 +263,8 @@ int binary_to_int(char* binary_string) //FUNCIONA CORRECTAMENTE
 void add_character(char* mssg_string, unsigned int* mssg_size, char letter) //????????????????????????????
 {
         (*mssg_size)++;
+        mssg_string = (char*)realloc(mssg_string, (*mssg_size) * sizeof(char));
+        mssg_string[(*mssg_size)-1] = letter;
 }
 
 void extract_string(char* mssg_string, int initial_pos, int final_pos, char* buffer) //FUNCIONA CORRECTAMENTE

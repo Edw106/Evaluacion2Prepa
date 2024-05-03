@@ -114,27 +114,24 @@ void liberate_memory(Logger* logger);
 int main()
 {        
         Logger* logger = create_log(); //Crea el logger que utilizaremos
-
-        //Creo un dato tipo Message
-        Message* mensaje1 = (char*)calloc(1,sizeof(Message));
-
-        //agg 'A'
-        mensaje1->string = (char*)realloc(mensaje1->string, mensaje1->size * sizeof(char));
-        add_character(mensaje1->string, &mensaje1->size, 'A');
-        printf("%s\n",mensaje1->string);
-        
-        //agg 'h'
-        mensaje1->string = (char*)realloc(mensaje1->string, mensaje1->size * sizeof(char));
-        add_character(mensaje1->string, &mensaje1->size, 'h');
-        printf("%s\n",mensaje1->string);
-        
-        //agg 'h'
-        mensaje1->string = (char*)realloc(mensaje1->string, mensaje1->size * sizeof(char));
-        add_character(mensaje1->string, &mensaje1->size, 'h');
-        printf("%s\n",mensaje1->string);
         
         
-        //Si había que usar memoria dinámica >:)
+        printf("Programa de la NASA para leer mensajes en binario\n");
+        //Pedir cadena de caracteres binarios de 2 bytes, 16 bits
+        printf("Introduzca en bits el tamaño de la cadena:\n");
+        char tamanoenbinario[17]="hola como esta ud";
+        
+        
+        //Es el num de bits leídos a continuación 
+        // Convertir
+        char parte1[9];
+        char parte2[9];
+        extract_string(tamanoenbinario, 1, 8, parte1);
+        print_string(parte1);
+        extract_string(tamanoenbinario, 9, 16, parte2);
+        print_string(parte2);
+        
+        
         
         liberate_memory(logger); //Libera la memoria que ocupaba el logger
         return 0;

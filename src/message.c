@@ -43,10 +43,10 @@ int binary_to_int(char* binary_string) //FUNCIONA CORRECTAMENTE
 	return Resultado;
 }
 
-//NOTAAA: MODIFIQUÉ LOS PARAMETROS QUE RECIBE: char* mssg_string --> char** mssg_string
+//NOTAAA: (un no) MODIFIQUÉ LOS PARAMETROS QUE RECIBE: char* mssg_string --> char** mssg_string
 void add_character(char* mssg_string, unsigned int* mssg_size, char letter) //????????????????????????????
 {
-	print_string(mssg_string);
+	printf("%c", mssg_string[1]);
 }
 
 void extract_string(char* mssg_string, int initial_pos, int final_pos, char* buffer) //FUNCIONA CORRECTAMENTE

@@ -119,7 +119,32 @@ int main()
         printf("Programa de la NASA para leer mensajes en binario\n");
         //Pedir cadena de caracteres binarios de 2 bytes, 16 bits
         printf("Introduzca en bits el tamaño de la cadena:\n");
-        char tamanoenbinario[17]="hola como esta ud";
+        
+        
+        
+        
+        
+        
+        
+        
+        char tamanoenbinario[17]="holas como estan";
+        
+        
+        //---------------------------------------------------------------------------------
+        //MIRA  <--------------------------------------------------------------------------
+        //Comenta y descomenta esto:
+        
+        
+        for(int i = 0; i < 16; i++)
+        {
+            tamanoenbinario[i] = getchar();
+            //Escribe por favor "holas como estan", y aunque resulta en un string
+            // igual al string ya definido, dan cosas totalmente distintas 
+        }
+        
+        
+        
+        //POR QUÉ??????
         
         
         //Es el num de bits leídos a continuación 
@@ -128,6 +153,8 @@ int main()
         char parte2[9];
         extract_string(tamanoenbinario, 1, 8, parte1);
         print_string(parte1);
+        
+        printf(" ");
         extract_string(tamanoenbinario, 9, 16, parte2);
         print_string(parte2);
         

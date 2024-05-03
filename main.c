@@ -12,8 +12,8 @@ int main()
 	print_string(prueba.string);
 	
 	
-	//~ add_character(prueba.string, &(prueba.size), 'C');
-	//~ print_string(prueba.string);
+	add_character(prueba.string, &(prueba.size), 'C');
+	print_string(prueba.string);
 	
 
 

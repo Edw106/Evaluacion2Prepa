@@ -11,8 +11,9 @@ int main()
 	Message prueba = {8, "Esto es "};
 	print_string(prueba.string);
 	
-	add_character(prueba.string, &(prueba.size), 'C');
-	print_string(prueba.string);
+	
+	//~ add_character(prueba.string, &(prueba.size), 'C');
+	//~ print_string(prueba.string);
 	
 
 

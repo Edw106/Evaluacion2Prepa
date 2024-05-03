@@ -123,6 +123,8 @@ void scan_bits(char * string, int size)
             bit++;
         }
     }
+    
+    while(getchar() != '\n');
 
 }
 
@@ -156,7 +158,7 @@ int main()
         
         int tamano = p1*256 + p2;
         
-        printf("Eso significa tamaño: %i", tamano);
+        printf("Eso significa %i\n\n", tamano);
         
         
         
@@ -169,6 +171,9 @@ int main()
         scan_bits(mensaje_binario, tamano);
         
         
+        
+        
+        //Pasarlo
         translate_message(mensaje_binario, tamano, logger);
         
         
@@ -384,13 +389,15 @@ void translate_message(char* binary_string, int size, Logger* logger)
 
     for(int i = 0; i < char_cant; i++)
     {
-        extract_string(binary_string, (8*i), ((8*i)-1), temp_buffer);
+        //01001000011011110110110001100001
+        extract_string(binary_string, (8*i+1), (8*(i+1)), temp_buffer); //Pequeña corrección aritmética
         int num = binary_to_int(temp_buffer);
         add_character(message->string, &message->size, int_to_char(num));
     }
 
     add_to_log(logger, message);
-
+    
+    //message->string[0] = 'H';
     print_string(message->string);
 }
 

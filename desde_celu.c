@@ -118,46 +118,49 @@ int main()
         
         printf("Programa de la NASA para leer mensajes en binario\n");
         //Pedir cadena de caracteres binarios de 2 bytes, 16 bits
-        printf("Introduzca en bits el tamaño de la cadena:\n");
+        printf("Introduzca en bits el tamaño de la mensaje:\n");
         
         
-        
-        
-        
-        
-        
-        
-        char tamanoenbinario[17]="holas como estan";
-        
-        
-        //---------------------------------------------------------------------------------
-        //MIRA  <--------------------------------------------------------------------------
-        //Comenta y descomenta esto:
-        
+        char tamanoenbinario[17];
         
         for(int i = 0; i < 16; i++)
         {
             tamanoenbinario[i] = getchar();
-            //Escribe por favor "holas como estan", y aunque resulta en un string
-            // igual al string ya definido, dan cosas totalmente distintas 
         }
-        
-        
-        
-        //POR QUÉ??????
-        
+        while(getchar() != '\n'); //Si sobran
         
         //Es el num de bits leídos a continuación 
         // Convertir
         char parte1[9];
         char parte2[9];
         extract_string(tamanoenbinario, 1, 8, parte1);
-        print_string(parte1);
-        
-        printf(" ");
         extract_string(tamanoenbinario, 9, 16, parte2);
-        print_string(parte2);
         
+        
+        
+        int p1 = binary_to_int(parte1);
+        int p2 = binary_to_int(parte2);
+        
+        int tamano = p1*256 + p2;
+        
+        printf("Eso significa tamaño: %i", tamano);
+        
+        
+        
+        
+        
+        //Pedir la cadena en si
+        char * mensaje_binario = (char *) calloc(tamano+1, sizeof(char));
+        printf("Introduzca el mensaje en binario:\n");
+        
+        for(int i = 0; i < tamano; i++)
+        {
+            mensaje_binario[i] = getchar();
+        }
+        while(getchar() != '\n'); //Por si sobran
+        
+        
+        translate_message(mensaje_binario, tamano, logger);
         
         
         liberate_memory(logger); //Libera la memoria que ocupaba el logger
@@ -332,7 +335,7 @@ void extract_string(char* mssg_string, int initial_pos, int final_pos, char* buf
 // ¿QUÉ HACE ESA VAINA INTERNAMENTE?
 Logger* create_log()
 {
-    Logger* new_logger = calloc(1, sizeof(Logger));
+    Logger* new_logger = (Logger*) calloc(1, sizeof(Logger));
     // Crea un NUEVO VECTOR de LOGGER (de tam 1)
 
     new_logger->logs = NULL;

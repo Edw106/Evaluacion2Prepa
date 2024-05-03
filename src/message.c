@@ -1,5 +1,8 @@
 #include<message.h>
 
+// ----------------------------------------------------
+// ------------------MIS FUNCIONES---------------------
+// ----------------------------------------------------
 
 // Let's warm up!
 int potentiation(int base, int exp) //FUNCIONA CORRECTAMENTE
@@ -89,8 +92,12 @@ Logger* create_log()
 
 
 	
-
-
+	
+	
+	
+// ----------------------------------------------------
+// ---------------FUNCIONES YA HECHAS------------------
+// ----------------------------------------------------
 
 // QUE HACE?
 int add_to_log(Logger* logger, Message* message)

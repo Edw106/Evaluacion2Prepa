@@ -5,11 +5,12 @@
 //Este será el main de prueba
 int main()
 {	
-	Logger* logger = create_log();
+	Logger* logger = create_log(); //Crea el logger que utilizaremos
 	
+	Message prueba;
 	
 	
 
-	liberate_memory(logger);
+	liberate_memory(logger); //Libera la memoria que ocupaba el logger
 	return 0;
 }

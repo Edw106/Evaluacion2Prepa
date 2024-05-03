@@ -45,7 +45,7 @@ int binary_to_int(char* binary_string) //FUNCIONA CORRECTAMENTE
 
 void add_character(char* mssg_string, unsigned int* mssg_size, char letter) //????????????????????????????
 {
-	mssg_string[] = 'O';
+	(*mssg_size)++
 }
 
 void extract_string(char* mssg_string, int initial_pos, int final_pos, char* buffer) //FUNCIONA CORRECTAMENTE

@@ -56,10 +56,10 @@ void liberate_memory(Logger* logger);
 
 
 
-
-
-
-
+//Mine
+void scan_bits(char * string, int size);
+void descifrar_mensaje(Logger* logger);
+void ver_historial(Logger* logger);
 
 
 
@@ -110,6 +110,46 @@ void liberate_memory(Logger* logger);
 //#include"message.h"
 
 
+
+
+//Este será el main de prueba
+int main()
+{        
+        Logger* logger = create_log(); //Crea el logger que utilizaremos
+        
+        
+    int salir = 0;
+        
+    do
+    {
+        
+        printf("Programa de la NASA para leer mensajes en binario\n");
+        while(getchar() != '\n');
+        printf("1. Descifrar mensaje\n2. Ver historial\n");
+        switch(getchar()-48)
+        {
+            case 1:
+                descifrar_mensaje(logger);
+                break;
+                
+            case 2:
+                ver_historial(logger);
+                break;
+                
+            default:
+                salir = 1;
+                break;
+        }
+        
+    }
+    while(salir == 0);
+    
+        liberate_memory(logger); //Libera la memoria que ocupaba el logger
+        return 0;
+}
+
+
+//Mine
 void scan_bits(char * string, int size)
 {
     char ch = 0;
@@ -128,21 +168,13 @@ void scan_bits(char * string, int size)
 
 }
 
-//Este será el main de prueba
-int main()
-{        
-        Logger* logger = create_log(); //Crea el logger que utilizaremos
-        
-        
-        printf("Programa de la NASA para leer mensajes en binario\n");
+
+void descifrar_mensaje(Logger* logger)
+{
         //Pedir cadena de caracteres binarios de 2 bytes, 16 bits
-        printf("Introduzca en bits el tamaño de la mensaje:\n");
-        
-        
+        printf("Introduzca en binario el tamaño de la mensaje (solo 2 bytes):\n");
         char tamanoenbinario[17];
-        
         scan_bits(tamanoenbinario, 16);
-        
         
         //Es el num de bits leídos a continuación 
         // Convertir
@@ -150,46 +182,35 @@ int main()
         char parte2[9];
         extract_string(tamanoenbinario, 1, 8, parte1);
         extract_string(tamanoenbinario, 9, 16, parte2);
-        
-        
-        
         int p1 = binary_to_int(parte1);
         int p2 = binary_to_int(parte2);
-        
         int tamano = p1*256 + p2;
-        
-        printf("Eso significa %i\n\n", tamano);
-        
-        
-        
-        
+        printf("Tamaño del mensaje: %i\n\n", tamano);
         
         //Pedir la cadena en si
         char * mensaje_binario = (char *) calloc(tamano+1, sizeof(char));
         printf("Introduzca el mensaje en binario:\n");
-        
         scan_bits(mensaje_binario, tamano);
         
-        
-        
-        
         //Pasarlo
+        printf("MENSAJE TRADUCIDO:\n");
         translate_message(mensaje_binario, tamano, logger);
-        
-        
-        liberate_memory(logger); //Libera la memoria que ocupaba el logger
-        return 0;
+        printf("\n");
+        while(getchar() != '\n');
 }
 
 
-
-
-
-
-
-
-
-
+void ver_historial(Logger* logger)
+{
+    for(int i = 0; i < logger->size; i++)
+    {
+        printf("MENSAJE #%i ", i+1);
+        printf("[Caracteres: %i]\n", (*(logger->logs))[i].size);
+        print_string((*(logger->logs))[i].string);
+        printf("\n\n");    
+    }
+    while(getchar() != '\n');
+}
 
 
 
@@ -318,11 +339,10 @@ void extract_string(char* mssg_string, int initial_pos, int final_pos, char* buf
         int i = 0;
     while(pos <= final_pos)
     {
-                buffer[i] = mssg_string[pos];
-
-                i++;
-                pos ++;
-        }
+        buffer[i] = mssg_string[pos];
+        i++;
+        pos ++;
+    }
 }
 
 
@@ -395,8 +415,6 @@ void translate_message(char* binary_string, int size, Logger* logger)
     }
 
     add_to_log(logger, message);
-    
-    //message->string[0] = 'H';
     print_string(message->string);
 }
 
@@ -416,3 +434,9 @@ void liberate_memory(Logger* logger)
     free(logger);
     logger = NULL;
 }
+
+
+
+
+
+

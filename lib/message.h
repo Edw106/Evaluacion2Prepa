@@ -41,7 +41,10 @@ void print_string(char*);
 
 // Let's code!
 int binary_to_int(char*);
-void add_character(char*, unsigned int*, char);
+void add_character(char* mssg_string, unsigned int* mssg_size, char letter);
+
+
+
 void extract_string(char*, int, int, char*);
 
 
